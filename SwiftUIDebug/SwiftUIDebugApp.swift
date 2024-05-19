@@ -13,8 +13,10 @@ struct SwiftUIDebugApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            MusicDetailView()
+//            CounterViewWithHang(counterViewModel: CounterViewModel())
+//            ContentView()
+//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }
