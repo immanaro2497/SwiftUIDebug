@@ -51,6 +51,7 @@ struct ReactionView: View {
         var body: some View {
             VStack {
                 TextField("text", text: $text)
+                    .background(Color.random())
                 HStack(spacing: 40) {
                     ForEach(Reaction.allCases) { reaction in
                         Image(systemName: viewModel.reaction != reaction ? reaction.selectedSystemImageName : reaction.systemImageName)

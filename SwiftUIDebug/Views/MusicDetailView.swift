@@ -28,12 +28,13 @@ struct MusicDetailView: View {
     @State private var isPlaying: Bool = false
 //    @Binding var text: String
     @StateObject private var music: Music = Music()
+    @Binding var testStruct: TestStruct
     
-    init() {
-        print(Self.self, #function)
-        print(_isPOD(MusicDetailView.self))
+//    init() {
+//        print(Self.self, #function)
+//        print(_isPOD(MusicDetailView.self))
 //        print(type(of: body))
-    }
+//    }
 
     var body: some View {
         VStack(spacing: 24) {
@@ -46,11 +47,42 @@ struct MusicDetailView: View {
             
             MusicTitleView(music: $music.name)
                 .debugViewChange()
-            
             MusicAuthorView(music: $music.author)
-            
             PlayButton(isPlaying: $isPlaying)
             
+            
+//            Text(music.name)
+//                .font(.title)
+//                .background(Color.random())
+//            TextField("music name", text: $music.name)
+//                .modifier(CustomTextField(title: "music name"))
+//                .background(Color.random())
+//
+//            
+//            Text("Music author - \(music.author ?? "")")
+//                .background(Color.random())
+//            TextField("music author", text: $music.author)
+//                .modifier(CustomTextField(title: "music author"))
+//                .background(Color.random())
+//            
+//            Button(isPlaying ? "Pause" : "Play") {
+//                withAnimation {
+//                    isPlaying.toggle()
+//                }
+//            }
+//            .scaleEffect(isPlaying ? 2 : 1)
+//            .background(Color.random())
+            
+        }
+        .onAppear {
+//            let structInstanceAddress = MemoryAddress(of: &testStruct)
+//            print(String(format: "%018p", structInstanceAddress.intValue))
+//            print(structInstanceAddress)
+            withUnsafePointer(to: testStruct) {
+                print(String(format: "%p", $0))
+            }
+            let classInstanceAddress = MemoryAddress(of: testStruct.test)
+            print("TestStruct test - \(classInstanceAddress)")
         }
 //        .task {
 //            music = Music()
@@ -108,7 +140,7 @@ struct PlayButton: View {
 }
 
 #Preview {
-    MusicDetailView()
+    MusicDetailView(testStruct: .constant(TestStruct(test: Test(name: "test"), name: "test")))
 }
 
 struct CustomTextField: ViewModifier {

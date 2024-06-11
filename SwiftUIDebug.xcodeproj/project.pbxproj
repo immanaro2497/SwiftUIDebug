@@ -7,11 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		181324892C044256006BEB72 /* ListWithAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181324882C044256006BEB72 /* ListWithAlertView.swift */; };
+		1813248B2C045129006BEB72 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1813248A2C045129006BEB72 /* TestView.swift */; };
 		181484302BF47D260056BB3C /* MusicDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1814842F2BF47D260056BB3C /* MusicDetailView.swift */; };
 		181484332BF489760056BB3C /* DebugHelperViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181484322BF489760056BB3C /* DebugHelperViews.swift */; };
 		181484362BF4EDD00056BB3C /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181484352BF4EDD00056BB3C /* Color+Extension.swift */; };
+		1877ED082C0F3ADF0023F83C /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1877ED072C0F3ADF0023F83C /* ChartView.swift */; };
+		1881A57A2C0DC067001FE3CD /* CustomRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1881A5792C0DC067001FE3CD /* CustomRefreshView.swift */; };
 		189999B42BF5DAC100A897BB /* ReactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189999B32BF5DAC100A897BB /* ReactionView.swift */; };
 		18CF58E72BEB79170059909F /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CF58E62BEB79170059909F /* DetailView.swift */; };
+		18D0D1362BFE2F5C00E3602E /* MultiWindowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D0D1352BFE2F5C00E3602E /* MultiWindowView.swift */; };
 		18E1DEFF2BF78F8E00715790 /* CounterViewWithHang.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E1DEFE2BF78F8E00715790 /* CounterViewWithHang.swift */; };
 		18E1DF012BF7A73500715790 /* CounterViewWithoutHang.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E1DF002BF7A73500715790 /* CounterViewWithoutHang.swift */; };
 		18ECCBA52BEA726000F6378E /* SwiftUIDebugApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18ECCBA42BEA726000F6378E /* SwiftUIDebugApp.swift */; };
@@ -45,11 +50,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		181324882C044256006BEB72 /* ListWithAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListWithAlertView.swift; sourceTree = "<group>"; };
+		1813248A2C045129006BEB72 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		1814842F2BF47D260056BB3C /* MusicDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicDetailView.swift; sourceTree = "<group>"; };
 		181484322BF489760056BB3C /* DebugHelperViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugHelperViews.swift; sourceTree = "<group>"; };
 		181484352BF4EDD00056BB3C /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
+		1877ED072C0F3ADF0023F83C /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+		1881A5792C0DC067001FE3CD /* CustomRefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRefreshView.swift; sourceTree = "<group>"; };
 		189999B32BF5DAC100A897BB /* ReactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactionView.swift; sourceTree = "<group>"; };
 		18CF58E62BEB79170059909F /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		18D0D1352BFE2F5C00E3602E /* MultiWindowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiWindowView.swift; sourceTree = "<group>"; };
 		18E1DEFE2BF78F8E00715790 /* CounterViewWithHang.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViewWithHang.swift; sourceTree = "<group>"; };
 		18E1DF002BF7A73500715790 /* CounterViewWithoutHang.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterViewWithoutHang.swift; sourceTree = "<group>"; };
 		18ECCBA12BEA726000F6378E /* SwiftUIDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,6 +76,7 @@
 		18ECCBC62BEA726100F6378E /* SwiftUIDebugUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIDebugUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		18ECCBD32BEA74F800F6378E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		18ECCBD52BEA7D3A00F6378E /* MemoryAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryAddress.swift; sourceTree = "<group>"; };
+		18FFDA8E2C18885100001B40 /* SwiftUIDebug.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = SwiftUIDebug.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +131,11 @@
 				18ECCBA62BEA726000F6378E /* ContentView.swift */,
 				18E1DEFE2BF78F8E00715790 /* CounterViewWithHang.swift */,
 				18E1DF002BF7A73500715790 /* CounterViewWithoutHang.swift */,
+				18D0D1352BFE2F5C00E3602E /* MultiWindowView.swift */,
+				181324882C044256006BEB72 /* ListWithAlertView.swift */,
+				1813248A2C045129006BEB72 /* TestView.swift */,
+				1881A5792C0DC067001FE3CD /* CustomRefreshView.swift */,
+				1877ED072C0F3ADF0023F83C /* ChartView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -127,6 +143,7 @@
 		18ECCB982BEA726000F6378E = {
 			isa = PBXGroup;
 			children = (
+				18FFDA8E2C18885100001B40 /* SwiftUIDebug.xctestplan */,
 				18ECCBA32BEA726000F6378E /* SwiftUIDebug */,
 				18ECCBB92BEA726100F6378E /* SwiftUIDebugTests */,
 				18ECCBC32BEA726100F6378E /* SwiftUIDebugUITests */,
@@ -318,13 +335,18 @@
 				181484362BF4EDD00056BB3C /* Color+Extension.swift in Sources */,
 				18E1DF012BF7A73500715790 /* CounterViewWithoutHang.swift in Sources */,
 				181484332BF489760056BB3C /* DebugHelperViews.swift in Sources */,
+				1813248B2C045129006BEB72 /* TestView.swift in Sources */,
+				1877ED082C0F3ADF0023F83C /* ChartView.swift in Sources */,
 				18ECCBA72BEA726000F6378E /* ContentView.swift in Sources */,
 				18ECCBA52BEA726000F6378E /* SwiftUIDebugApp.swift in Sources */,
 				18CF58E72BEB79170059909F /* DetailView.swift in Sources */,
 				189999B42BF5DAC100A897BB /* ReactionView.swift in Sources */,
+				18D0D1362BFE2F5C00E3602E /* MultiWindowView.swift in Sources */,
 				18ECCBD42BEA74F800F6378E /* LoginView.swift in Sources */,
+				181324892C044256006BEB72 /* ListWithAlertView.swift in Sources */,
 				181484302BF47D260056BB3C /* MusicDetailView.swift in Sources */,
 				18ECCBB12BEA726100F6378E /* SwiftUIDebug.xcdatamodeld in Sources */,
+				1881A57A2C0DC067001FE3CD /* CustomRefreshView.swift in Sources */,
 				18ECCBD62BEA7D3A00F6378E /* MemoryAddress.swift in Sources */,
 				18E1DEFF2BF78F8E00715790 /* CounterViewWithHang.swift in Sources */,
 			);

@@ -20,6 +20,14 @@ struct MemoryAddress<T>: CustomStringConvertible {
     init(of structPointer: UnsafePointer<T>) {
         intValue = Int(bitPattern: structPointer)
     }
+    
+    func address(o: UnsafeRawPointer) -> Int {
+        return Int(bitPattern: o)
+    }
+
+    func addressHeap<T: AnyObject>(o: T) -> Int {
+        return unsafeBitCast(o, to: Int.self)
+    }
 }
 
 extension MemoryAddress where T: AnyObject {
