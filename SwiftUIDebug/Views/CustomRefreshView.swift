@@ -131,7 +131,7 @@ struct CustomRefreshViewModifier: ViewModifier {
                     if isRefreshing || abs(minY - offset) > refreshHeight / 2 {
                         LogoView(progress: isRefreshing ? 1 : (offset - minY - refreshHeight) / (amountToPullBeforeRefreshing - minY))
                             .frame(width: refreshHeight, height: refreshHeight)
-                            .offset(y: refreshOffset)
+                            .offset(y: offset)
                     }
                     content
                         .overlay {
@@ -198,9 +198,9 @@ struct RefreshViewOffsetKey: PreferenceKey {
 
 struct RefreshTestView: View {
     var body: some View {
-        ScrollView {
+        List {
             VStack {
-                ForEach(0...100, id: \.self) { index in
+                ForEach(0...50, id: \.self) { index in
                     Text("row \(index)")
                         .padding()
                         .frame(width: .infinity)
@@ -267,5 +267,98 @@ public struct ScrollWithRefreshView<Content: View>: View {
 }
 
 #Preview {
-    CustomRefreshView()
+    CustomRefreshViewNewTest()
+}
+
+struct CustomRefreshViewNewTest: View {
+    
+    @State private var isRefreshing = false
+        @State private var offset: CGFloat = 0
+    
+    var body: some View {
+        List {
+//            VStack {
+                ForEach(0...20, id: \.self) { index in
+                    Text("row \(index)")
+                        .padding()
+                        .frame(width: .infinity)
+                }
+//            }
+            .frame(maxWidth: .infinity)
+        }
+        .listStyle(.plain)
+        .frame(maxWidth: 500, maxHeight: 800)
+        .customRefreshable {
+            print("Refreshing action")
+        }
+    }
+}
+
+public extension View {
+    func customRefreshable(action: @escaping () async -> Void) -> some View {
+        modifier(CustomRefreshViewModifierNewTest(action: action))
+    }
+}
+
+struct CustomRefreshViewModifierNewTest: ViewModifier {
+    
+    @State private var yOffset: CGFloat = 0
+    @State private var isRefreshing: Bool = false
+    private let amountToPullBeforeRefreshing: CGFloat = 150
+    let action: () async -> Void
+    
+    func body(content: Content) -> some View {
+        GeometryReader { proxy in
+            let minY = proxy.frame(in: .global).minY
+            //            let refreshOffset: CGFloat = (minY + 50 - offset) > 50 ? 0 : (minY + 50 - offset)
+            let refreshOffset: CGFloat = minY - yOffset
+            let refreshHeight: CGFloat = 50
+            let target = minY + amountToPullBeforeRefreshing
+            let progress = max(yOffset - minY, 0) / amountToPullBeforeRefreshing
+            let _ = print(minY, refreshOffset, refreshOffset < 40, yOffset, progress)
+            ScrollView {
+//                    ZStack {
+                    content
+                        .overlay(alignment: .top) {
+//                            GeometryReader { geo in
+                            LogoView(progress: progress)
+                                    .frame(width: refreshHeight, height: refreshHeight)
+                                    .offset(y: refreshOffset)
+//                                    .preference(key: CustomPreferenceKey.self, value: geo.frame(in: .global).minY)
+//                            }
+                            
+                        }
+                        .background {
+                            GeometryReader { geo in
+                                let _ = print(geo.frame(in: .global).minY)
+                                Color.red
+                                    .preference(key: CustomPreferenceKeyNewTest.self, value: geo.frame(in: .global).minY)
+                            }
+                        }
+//                    }
+            }
+        }
+        .onPreferenceChange(CustomPreferenceKeyNewTest.self) { minY in
+            print("preference change", minY)
+            yOffset = minY
+            if minY > amountToPullBeforeRefreshing && !isRefreshing {
+                isRefreshing = true
+                print("Refreshing start")
+                Task {
+                    try? await Task.sleep(nanoseconds: 2000000000)
+                    await action()
+                    print("Refreshing end")
+                    isRefreshing = false
+                }
+            }
+        }
+    }
+}
+
+struct CustomPreferenceKeyNewTest: PreferenceKey {
+    static var defaultValue: CGFloat = 0
+    
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        value += nextValue()
+    }
 }

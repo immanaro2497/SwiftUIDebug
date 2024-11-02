@@ -77,12 +77,113 @@ struct TipKitView: View {
 }
 
 #Preview {
-    CustomText()
+    BusView()
 }
 
-struct CustomText: View {
+struct BusView: View {
     var body: some View {
-        LabelAlignment(text: "nfjkwen fjenwjkfn gjnwerkgn gklrmkgm gknlrekmf", textAlignmentStyle: .center, width: 300, fontName: "Times-New-Roman", fontSize: 16, fontColor: .black)
+        BusStopsViewControllerRepresentable()
+    }
+}
+
+struct BusStopsViewControllerRepresentable: UIViewControllerRepresentable {
+    typealias UIViewControllerType = UIViewController
+    
+    func makeUIViewController(context: Context) -> UIViewControllerType {
+        let controller = BusStopsController()
+        let navigationController = UINavigationController(rootViewController: controller)
+        return navigationController
+    }
+    
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}
+}
+
+class BusStopsController: UIViewController {
+    
+    override func viewDidLoad() {
+        let button = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 100))
+        button.setTitle("tap me", for: .normal)
+        button.addAction(UIAction { [weak self] _ in
+            self?.annotationViewDidTap()
+        }, for: .touchUpInside)
+        button.backgroundColor = .red
+        view.addSubview(button)
+    }
+    
+    func annotationViewDidTap() {
+        print("annotation tapped")
+        let detailView = BusStopDetailView()
+        let controller = UIHostingController(rootView: detailView)
+        navigationController?.pushViewController(controller, animated: true)
+    }
+}
+
+struct BusStopDetailView: View {
+    var body: some View {
+        BusStopDetailViewControllerRepresentable()
+            .navigationBarTitleDisplayMode(.large)
+            .ignoresSafeArea()
+            .toolbar {
+                //These ToolbarItems don't show up on iOS18, but does show up in iOS17
+                ToolbarItem(placement: .principal) {
+                    Text("11197")
+                }
+                
+                ToolbarItem(placement: .primaryAction) {
+                    Button {
+                        print("toolbar star")
+                    } label: {
+                        Image(systemName: "star")
+                    }
+                }
+            }
+            .toolbarRole(.browser)
+    }
+}
+
+struct BusStopDetailViewControllerRepresentable: UIViewControllerRepresentable {
+    typealias UIViewControllerType = UIViewController
+    func makeUIViewController(context: Context) -> UIViewControllerType {
+        let controller = UIViewController()
+        return controller
+    }
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}
+}
+
+struct ImageCustomBackground: View {
+    var body: some View {
+        ZStack(alignment: .bottomLeading) {
+            Rectangle()
+//                .frame(width: 120, height: 120)
+                .foregroundStyle(.red)
+                .background(.red)
+            Image(systemName: "teddybear.fill")
+                .resizable()
+        }
+        .aspectRatio(contentMode: .fit)
+        .frame(width: 500, height: 100)
+        GeometryReader { geometry in
+            let frame = geometry.frame(in: .local)
+            let global = geometry.frame(in: .global)
+            Rectangle()
+                .frame(width: frame.width * 0.8, height: frame.height * 0.6)
+                .foregroundStyle(.red)
+                .background(.red)
+                .padding(.leading, 16)
+                .cornerRadius(16)
+                .padding(.leading, -16)
+//                .offset(y: 120)
+                .position(x: frame.minX + 200, y: frame.maxY - 100)
+            Image(systemName: "teddybear.fill")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: frame.width * 0.7, height: frame.height * 0.8)
+                .border(.black, width: 2)
+                .offset(y: 30)
+        }
+//        .aspectRatio(contentMode: .fit)
+        .frame(width: 400, height: 300)
+        .border(.black, width: 2)
     }
 }
 

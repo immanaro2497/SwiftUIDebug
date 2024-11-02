@@ -58,3 +58,7 @@ struct NavigationStackMainView: View {
  }
  .frame(width: 150, height: 80)
  */
+
+#Preview {
+    NavigationStackMainView()
+}

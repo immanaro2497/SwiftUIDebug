@@ -33,7 +33,9 @@ struct CustomPresentationView<ViewContent: View>: UIViewControllerRepresentable 
         return controller
     }
     
-    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {}
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+        print("update view controller")
+    }
     
     class Coordinator: NSObject, UIAdaptivePresentationControllerDelegate {
         

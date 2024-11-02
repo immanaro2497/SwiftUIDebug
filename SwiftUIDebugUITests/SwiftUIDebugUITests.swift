@@ -26,6 +26,22 @@ final class SwiftUIDebugUITests: XCTestCase {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
+        
+        app/*@START_MENU_TOKEN@*/.buttons["a"]/*[[".cells.buttons[\"a\"]",".buttons[\"a\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.swipeLeft()
+        
+        let collectionViewsQuery = XCUIApplication().collectionViews
+        let aButton = collectionViewsQuery.buttons["a"]
+        aButton.swipeLeft()
+        aButton.swipeLeft()
+        
+        let bButton = collectionViewsQuery/*@START_MENU_TOKEN@*/.buttons["b"]/*[[".cells.buttons[\"b\"]",".buttons[\"b\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        bButton.swipeLeft()
+        bButton.swipeLeft()
+        
+        let cButton = collectionViewsQuery/*@START_MENU_TOKEN@*/.buttons["c"]/*[[".cells.buttons[\"c\"]",".buttons[\"c\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        cButton.swipeLeft()
+//        cButton.swipeLeft()
+        collectionViewsQuery/*@START_MENU_TOKEN@*/.buttons["minus.circle"]/*[[".buttons[\"Delete\"]",".buttons[\"minus.circle\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
 
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }

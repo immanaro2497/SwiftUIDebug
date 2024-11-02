@@ -27,19 +27,41 @@ struct RedrawnTab: View {
 
 struct CustomTabView: View {
     @Binding var page: Int
+    let text: String = "Text"
+    
+    init(page: Binding<Int>) {
+        print("custom tab view init")
+        self._page = page
+    }
     
     var body: some View {
-        TabView(selection: $page) {
-            ViewOne()
-                .tag(0)
-            
-            ViewTwo()
-                .tag(1)
-            
-            ViewThree()
-                .tag(2)
+        let _ = Self._printChanges()
+        NavigationStack {
+            TabView(selection: $page) {
+                ViewOne()
+                    .tag(0)
+                
+                ViewTwo()
+                    .tag(1)
+                
+                ViewThree()
+                    .tag(2)
+            }
+            .tabViewStyle(.page(indexDisplayMode: .never))
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("Hello")
+                }
+                
+                ToolbarItem(placement: .primaryAction) {
+                    Button {
+                        
+                    } label: {
+                        Image(systemName: "star")
+                    }
+                }
+            }
         }
-        .tabViewStyle(.page(indexDisplayMode: .never))
     }
 }
 
